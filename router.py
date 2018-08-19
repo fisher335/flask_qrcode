@@ -74,6 +74,6 @@ def download_file(filename):
     return send_from_directory(video_path, filename=filename, as_attachment=True)
 
 
-@app.route('/zhuang', methods=['get'])
+@app.route('/zhuang/', methods=['get'])
 def dazhuang():
     return render_template('zhuang.html')
