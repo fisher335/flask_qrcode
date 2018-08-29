@@ -5,5 +5,5 @@ __pycache__/router.cpython-36.pyc
 .idea/workspace.xml
 .idea/inspectionProfiles/Project_Default.xml
 .idea/*
-__pycache__/a*
+__pycache__/*
 static/qrcode/*
