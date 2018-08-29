@@ -2,11 +2,10 @@
 # @Date    : '2018/4/16 0016'
 # @Author  : Terry feng  (fengshaomin@qq.com)
 from app import app
-from flask import request, render_template, redirect, url_for,send_from_directory
+from flask import request, render_template, redirect, url_for, send_from_directory
 import qrcode
 import os, time
 from random import randint
-
 
 c_pa = os.path.dirname(__file__)
 static_path = c_pa + os.sep + "static"
@@ -68,13 +67,13 @@ def file_list():
     return render_template('file.html', files=li_file)
 
 
-
 @app.route('/download/<filename>/', methods=['get'])
 def download_file(filename):
     video_path = static_path + os.sep + 'qrcode'
     print(filename)
-    return send_from_directory(video_path,filename=filename,as_attachment=True)
+    return send_from_directory(video_path, filename=filename, as_attachment=True)
 
-@app.route('/zhuang', methods=['get'])
+
+@app.route('/zhuang/', methods=['get'])
 def dazhuang():
     return render_template('zhuang.html')
