@@ -12,6 +12,8 @@ import requests
 c_pa = os.path.dirname(__file__)
 static_path = c_pa + os.sep + "static"
 
+DOWNLOAD_PATH = r'D:\用户目录\下载'
+
 
 @app.route('/list/', methods=['GET'])
 def list_header():
@@ -55,15 +57,16 @@ def upload_post():
     f = request.files['file']
     file_name = f.filename
     print(file_name)
-    f.save(static_path + os.sep + 'videos' + os.sep + file_name)
+    # f.save(static_path + os.sep + 'videos' + os.sep + file_name)
+    f.save(os.path.join(DOWNLOAD_PATH,file_name))
     return redirect('/file/')
 
 
 @app.route('/file/', methods=['get'])
 def file_list():
     li_file = []
-    video_path = static_path + os.sep + 'videos'
-    for path, dir, file in os.walk(video_path):
+    # video_path = static_path + os.sep + 'videos'
+    for path, dir, file in os.walk(DOWNLOAD_PATH):
         for i in file:
             li_file.append(i)
     return render_template('file.html', files=li_file)
@@ -85,3 +88,10 @@ def dazhuang():
 def get_ip():
     my_ip = requests.get('http://jsonip.com').json()['ip']
     return make_response(my_ip)
+
+
+@app.route('/downloadfile/<filename>/', methods=['get'])
+def download_uploaded_file(filename):
+
+    print(filename)
+    return send_from_directory(DOWNLOAD_PATH, filename=filename, as_attachment=True)

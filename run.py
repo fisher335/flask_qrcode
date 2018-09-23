@@ -26,5 +26,5 @@ if __name__ == '__main__':
     server.backlog = 256
     server.max_accept = 30000
     logging.basicConfig(level='DEBUG')
-    logging.info(f'http://{addr}:{port}')
+    logging.info('http://{addr}:{port}'.format(addr=addr,port=port))
     server.serve_forever()
