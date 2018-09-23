@@ -2,10 +2,12 @@
 # @Date    : '2018/4/16 0016'
 # @Author  : Terry feng  (fengshaomin@qq.com)
 from app import app
-from flask import request, render_template, redirect, url_for, send_from_directory
+from flask import request, render_template, redirect, url_for, send_from_directory, make_response
 import qrcode
 import os, time
 from random import randint
+import json
+import requests
 
 c_pa = os.path.dirname(__file__)
 static_path = c_pa + os.sep + "static"
@@ -77,3 +79,9 @@ def download_file(filename):
 @app.route('/zhuang/', methods=['get'])
 def dazhuang():
     return render_template('zhuang.html')
+
+
+@app.route('/ip/', methods=['get'])
+def get_ip():
+    my_ip = requests.get('http://jsonip.com').json()['ip']
+    return make_response(my_ip)
