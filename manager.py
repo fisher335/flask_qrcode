@@ -15,7 +15,7 @@ from gevent.pywsgi import WSGIServer
 
 if __name__ == '__main__':
 
-    addr, port = '127.0.0.1', 8080
+    addr, port = app.config.get('HOST'), app.config.get('PORT')
     opts, _ = getopt.getopt(sys.argv[1:], "b:")
     for opt, value in opts:
         if opt == '-b':
