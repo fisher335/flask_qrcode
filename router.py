@@ -12,9 +12,7 @@ import requests
 c_pa = os.path.dirname(__file__)
 static_path = c_pa + os.sep + "static"
 
-DOWNLOAD_PATH = r'D:\用户目录\下载'
-
-
+DOWNLOAD_PATH = app.config.get('DOWNLOAD_PATH')
 @app.route('/list/', methods=['GET'])
 def list_header():
     return render_template('list.html', session=request.headers)

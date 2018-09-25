@@ -1,8 +1,9 @@
+#coding:utf-8
 import  os
 from flask import Flask
-
+from config import BasicConfig,RunConfig
 app = Flask(__name__)
-
+app.config.from_object(RunConfig)
 from router import *
 
 
