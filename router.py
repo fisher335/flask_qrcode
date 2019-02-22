@@ -12,7 +12,11 @@ import requests
 c_pa = os.path.dirname(__file__)
 static_path = c_pa + os.sep + "static"
 
-DOWNLOAD_PATH = app.config.get('DOWNLOAD_PATH')
+# DOWNLOAD_PATH = app.config.get('DOWNLOAD_PATH')
+
+DOWNLOAD_PATH = os.path.join(static_path,'videos')
+
+
 @app.route('/list/', methods=['GET'])
 def list_header():
     return render_template('list.html', session=request.headers)
@@ -56,7 +60,7 @@ def upload_post():
     file_name = f.filename
     print(file_name)
     # f.save(static_path + os.sep + 'videos' + os.sep + file_name)
-    f.save(os.path.join(DOWNLOAD_PATH,file_name))
+    f.save(os.path.join(DOWNLOAD_PATH, file_name))
     return redirect('/file/')
 
 
@@ -90,6 +94,13 @@ def get_ip():
 
 @app.route('/downloadfile/<filename>/', methods=['get'])
 def download_uploaded_file(filename):
-
     print(filename)
-    return send_from_directory(DOWNLOAD_PATH, filename=filename, as_attachment=True)
+    print(DOWNLOAD_PATH)
+    response = make_response(send_from_directory(DOWNLOAD_PATH, filename=filename, as_attachment=True))
+    response.headers['Content-Disposition']='attachment;filename={}'.format(filename.encode().decode('latin-1'))
+    return response
+
+
+@app.route('/favicon.ico')
+def get_fav():
+    return app.send_static_file('favicon.ico')
