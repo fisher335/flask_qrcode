@@ -94,8 +94,6 @@ def get_ip():
 
 @app.route('/downloadfile/<filename>/', methods=['get'])
 def download_uploaded_file(filename):
-    print(filename)
-    print(DOWNLOAD_PATH)
     response = make_response(send_from_directory(DOWNLOAD_PATH, filename=filename, as_attachment=True))
     response.headers['Content-Disposition']='attachment;filename={}'.format(filename.encode().decode('latin-1'))
     return response
