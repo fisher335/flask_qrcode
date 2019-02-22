@@ -13,6 +13,6 @@ class DevConfig(BasicConfig):
     DOWNLOAD_PATH = r'D:\MyDrivers'
 
 class RunConfig(BasicConfig):
-    HOST='O.0.0.O'
+    HOST='0.0.0.0'
     PORT = 7000
     DOWNLOAD_PATH = r'D:\MyDrivers'
