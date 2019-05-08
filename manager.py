@@ -3,9 +3,7 @@
 # @Author  : Terry feng  (fengshaomin@qq.com)
 # -*- coding: utf-8 -*-
 # @Date    : 2017/7/17 0017 , @Author  : fengshaomin@bjsasc.com
-from gevent import monkey
-
-monkey.patch_all()
+from gevent import monkey;monkey.patch_all()
 from app import app
 import logging
 import getopt
