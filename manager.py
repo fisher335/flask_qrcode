@@ -7,7 +7,7 @@ from gevent import monkey
 
 monkey.patch_all()
 from app import app
-import  logging
+import logging
 import getopt
 import sys
 from gevent.pool import Pool
@@ -26,5 +26,5 @@ if __name__ == '__main__':
     server.backlog = 256
     server.max_accept = 30000
     logging.basicConfig(level='DEBUG')
-    logging.info('http://{addr}:{port}'.format(addr=addr,port=port))
+    logging.info('http://{addr}:{port}'.format(addr=addr, port=port))
     server.serve_forever()
