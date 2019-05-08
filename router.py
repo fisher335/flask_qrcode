@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 # @Date    : '2018/4/16 0016'
 # @Author  : Terry feng  (fengshaomin@qq.com)
+from urllib.parse import quote
+
 from app import app
 from flask import request, render_template, redirect, url_for, send_from_directory, make_response
 import qrcode
@@ -14,7 +16,7 @@ static_path = c_pa + os.sep + "static"
 
 # DOWNLOAD_PATH = app.config.get('DOWNLOAD_PATH')
 
-DOWNLOAD_PATH = os.path.join(static_path,'videos')
+DOWNLOAD_PATH = os.path.join(static_path, 'videos')
 
 
 @app.route('/list/', methods=['GET'])
@@ -78,7 +80,10 @@ def file_list():
 def download_file(filename):
     video_path = static_path + os.sep + 'qrcode'
     print(filename)
-    return send_from_directory(video_path, filename=filename, as_attachment=True)
+
+    res = make_response(send_from_directory(video_path, filename, as_attachment=True, conditional=True))
+    res.headers["Content-Disposition"] = 'attachment; filename*="utf-8\'\'{}"'.format(filename.encode().decode('latin-1'))
+    return res
 
 
 @app.route('/zhuang/', methods=['get'])
@@ -96,7 +101,9 @@ def get_ip():
 def download_uploaded_file(filename):
     print(filename)
     print(DOWNLOAD_PATH)
-    return send_from_directory(DOWNLOAD_PATH, filename=filename, as_attachment=True)
+    res = make_response(send_from_directory(DOWNLOAD_PATH, filename, as_attachment=True, conditional=True))
+    res.headers["Content-Disposition"] = 'attachment; filename*="utf-8\'\'{}"'.format(filename.encode().decode('latin-1'))
+    return res
 
 
 @app.route('/favicon.ico')
