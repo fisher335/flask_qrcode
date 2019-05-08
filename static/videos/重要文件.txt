@@ -1,0 +1,36 @@
+1:anko依赖
+    compile 'org.jetbrains.anko:anko-sdk15:0.8.2'
+    compile 'org.jetbrains.anko:anko-support-v4:0.8.2'
+    compile 'org.jetbrains.anko:anko-appcompat-v7:0.8.2'
+    
+ 2：allprojects {
+    repositories {
+        jcenter()
+        mavenLocal()
+    }
+}
+
+3:nginx 启动 
+ /usr/local/openresty/nginx/sbin/nginx -c /usr/local/openresty/nginx/conf/nginx.conf
+ 
+ 4:五院测试环境数据库
+ jdbc:oracle:thin:@10.0.6.51:1521:adp16 
+ 
+ db_0317
+ log_0317
+ 
+ 资源卫星网盘外网地址
+ http://218.247.138.121:8181/NetDisk
+ 
+ Migration has started
+
+Your new IP address: 138.128.212.79
+
+wget  https://www.python.org/ftp/python/3.6.4/Python-3.6.4.tgz  
+
+git config --system http.sslverify false
+
+netstat -aon|findstr "8080"   taskkill /f /t /pid  [PID] 
+
+
+response.getHeaders().getContentLength()
