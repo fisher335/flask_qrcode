@@ -1,15 +1,15 @@
 # -*- coding: utf-8 -*-
 # @Date    : '2018/4/16 0016'
 # @Author  : Terry feng  (fengshaomin@qq.com)
-from urllib.parse import quote
+
+import os
+from random import randint
+
+import qrcode
+import requests
+from flask import request, render_template, redirect, send_from_directory, make_response
 
 from app import app
-from flask import request, render_template, redirect, url_for, send_from_directory, make_response
-import qrcode
-import os, time
-from random import randint
-import json
-import requests
 
 c_pa = os.path.dirname(__file__)
 static_path = c_pa + os.sep + "static"
@@ -82,7 +82,8 @@ def download_file(filename):
     print(filename)
 
     res = make_response(send_from_directory(video_path, filename, as_attachment=True, conditional=True))
-    res.headers["Content-Disposition"] = 'attachment; filename*="utf-8\'\'{}"'.format(filename.encode().decode('latin-1'))
+    res.headers["Content-Disposition"] = 'attachment; filename*="utf-8\'\'{}"'.format(
+        filename.encode().decode('latin-1'))
     return res
 
 
@@ -102,7 +103,8 @@ def download_uploaded_file(filename):
     print(filename)
     print(DOWNLOAD_PATH)
     res = make_response(send_from_directory(DOWNLOAD_PATH, filename, as_attachment=True, conditional=True))
-    res.headers["Content-Disposition"] = 'attachment; filename*="utf-8\'\'{}"'.format(filename.encode().decode('latin-1'))
+    res.headers["Content-Disposition"] = 'attachment; filename*="utf-8\'\'{}"'.format(
+        filename.encode().decode('latin-1'))
     return res
 
 

@@ -1,3 +1,4 @@
+gevent
 fake-useragent==0.1.10
 Flask==0.10
 qrcode==6.0
