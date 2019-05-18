@@ -25,6 +25,6 @@ if __name__ == '__main__':
     server = WSGIServer((addr, int(port)), app, spawn=pool)
     server.backlog = 256
     server.max_accept = 30000
-    logging.basicConfig(level='DEBUG')
+    logging.basicConfig(level='INFO')
     logging.info('http://{addr}:{port}'.format(addr=addr, port=port))
     server.serve_forever()
