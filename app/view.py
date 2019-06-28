@@ -7,10 +7,9 @@ from random import randint
 import qrcode
 import requests
 from flask import request, render_template, redirect, send_from_directory, make_response
-
+from .util import OcrUtil
 from app import app
 
-from . import util
 c_pa = os.path.dirname(__file__)
 static_path = c_pa + os.sep + "static"
 
@@ -123,4 +122,4 @@ def ocr_post():
     print(file_name)
     # f.save(static_path + os.sep + 'videos' + os.sep + file_name)
     f.save(os.path.join(DOWNLOAD_PATH, file_name))
-    util.hello()
+    return OcrUtil.hello();
