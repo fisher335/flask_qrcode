@@ -4,13 +4,13 @@
 
 import os
 from random import randint
-
 import qrcode
 import requests
 from flask import request, render_template, redirect, send_from_directory, make_response
 
 from app import app
 
+from . import util
 c_pa = os.path.dirname(__file__)
 static_path = c_pa + os.sep + "static"
 
@@ -36,8 +36,6 @@ def index():
     return render_template("index.html")
 
 
-#
-#
 @app.route('/qrcode/', methods=['POST'])
 def qrcodelike():
     url = request.form.get('url', "")
@@ -111,3 +109,18 @@ def download_uploaded_file(filename):
 @app.route('/favicon.ico')
 def get_fav():
     return app.send_static_file('favicon.ico')
+
+
+@app.route('/ocr/', methods=['get'])
+def ocr_get():
+    return render_template('ocr.html')
+
+
+@app.route('/ocr/', methods=['post'])
+def ocr_post():
+    f = request.files['file']
+    file_name = f.filename
+    print(file_name)
+    # f.save(static_path + os.sep + 'videos' + os.sep + file_name)
+    f.save(os.path.join(DOWNLOAD_PATH, file_name))
+    util.hello()
