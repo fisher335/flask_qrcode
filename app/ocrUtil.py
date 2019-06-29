@@ -18,7 +18,13 @@ class OcrClient:
 
     def simple_ocr(self, path):
         result = self.client.basicGeneral(self.get_file_content(path))
-        return result
+        words = ""
+        if result.get('log_id', '') != "":
+            for i in result.get('words_result'):
+                words += i['words'] + '''<br>'''
+        else:
+            words = str(result)
+        return words
 
     def hello(self):
         return "hello java"

@@ -7,7 +7,7 @@ from random import randint
 import qrcode
 import requests
 from flask import request, render_template, redirect, send_from_directory, make_response
-from .util import OcrClient
+from .ocrUtil import OcrClient
 
 from app import app
 
