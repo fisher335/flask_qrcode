@@ -6,3 +6,4 @@ requests==2.13.0
 qrcode
 baidu-aip
 Pillow==4.2.1
+opencv-python
