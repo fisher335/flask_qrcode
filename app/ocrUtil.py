@@ -28,3 +28,14 @@ class OcrClient:
 
     def hello(self):
         return "hello java"
+
+    def fapiao(self):
+        options = {}
+        options['type'] = 'roll'
+        result = self.client.vatInvoice(open(r'C:\Users\Administrator\Desktop\1.png', 'rb').read(), options=options)
+        print(result)
+
+
+if __name__ == '__main__':
+    oc = OcrClient()
+    oc.fapiao()

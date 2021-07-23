@@ -3,5 +3,6 @@ fake-useragent==0.1.10
 Flask==0.10
 qrcode==6.0
 requests==2.13.0
-
+qrcode
+baidu-aip
 Pillow==4.2.1
