@@ -124,3 +124,18 @@ def ocr_post():
     f.save(file_tmp_path)
     oc = OcrClient()
     return str(oc.simple_ocr(file_tmp_path))
+
+
+@app.route('/invoice/', methods=['get'])
+def invoice_get():
+    return render_template('invoice.html')
+
+
+@app.route('/invoice/', methods=['post'])
+def invoice_post():
+    f = request.files['file']
+    file_name = f.filename
+    file_tmp_path = os.path.join(DOWNLOAD_PATH, file_name)
+    f.save(file_tmp_path)
+    oc = OcrClient()
+    return str(oc.fapiao(file_tmp_path))
