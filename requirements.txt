@@ -5,5 +5,5 @@ qrcode==6.0
 requests==2.13.0
 qrcode
 baidu-aip
-Pillow==4.2.1
+Pillow==9.0.1
 opencv-python
