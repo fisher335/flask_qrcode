@@ -2,7 +2,7 @@ gevent
 fake-useragent==0.1.10
 Flask==2.0.3
 qrcode==6.0
-requests==2.13.0
+requests==2.20.0
 qrcode
 baidu-aip
 Pillow
