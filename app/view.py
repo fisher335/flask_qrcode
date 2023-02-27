@@ -16,7 +16,7 @@ static_path = current_path + os.sep + "static"
 
 # DOWNLOAD_PATH = app.config.get('DOWNLOAD_PATH')
 
-DOWNLOAD_PATH = os.path.join(static_path, 'upload')
+DOWNLOAD_PATH = os.path.join(static_path, 'videos')
 
 
 @app.route('/list/', methods=['GET'])
